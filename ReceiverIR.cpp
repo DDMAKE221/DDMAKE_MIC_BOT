@@ -1,8 +1,7 @@
 /**
  * IR receiver (Version 0.0.4)
  *
- * Copyright (C) 2010 Shinichiro Nakamura (CuBeatSystems)
- * http://shinta.main.jp/
+ 
  */
 
 #include "ReceiverIR.h"

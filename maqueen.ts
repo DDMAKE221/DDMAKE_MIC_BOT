@@ -1,20 +1,13 @@
 /** 
- * @file pxt-maqueen/maqueen.ts
- * @brief DFRobot's maqueen makecode library.
- * @n [Get the module here](https://www.dfrobot.com.cn/goods-1802.html)
- * @n This is a MakeCode graphical programming education robot.
- * 
- * @copyright    [DFRobot](http://www.dfrobot.com), 2016
- * @copyright    MIT Lesser General Public License
- * 
- * @author [email](jie.tang@dfrobot.com)
- * @date  2019-10-08
+ * @file pxt-ddmake/ddmake.ts
+ * @brief DFRobot's ddmake makecode library.
+
 */
 
-let maqueencb: Action
-let maqueenmycb: Action
-let maqueene = "1"
-let maqueenparam = 0
+let ddmakecb: Action
+let ddmakemycb: Action
+let ddmakee = "1"
+let ddmakeparam = 0
 let alreadyInit = 0
 let IrPressEvent = 0
 const MOTER_ADDRESSS = 0x10
@@ -34,8 +27,8 @@ interface KV {
     action: Action;
 }
 
-//% weight=10 color=#008B00 icon="\uf136" block="Maqueen"
-namespace maqueen {
+//% weight=10 color=#008B00 icon="\uf136" block="ddmake"
+namespace ddmake {
 
     let kbCallback: KV[] = []
 
@@ -101,22 +94,22 @@ namespace maqueen {
         turnOff = 0x00
     }
 
-    //% advanced=true shim=maqueenIR::initIR
+    //% advanced=true shim=ddmakeIR::initIR
     function initIR(pin: Pins): void {
         return
     }
 
-    //% advanced=true shim=maqueenIR::onPressEvent
+    //% advanced=true shim=ddmakeIR::onPressEvent
     function onPressEvent(btn: RemoteButton, body: Action): void {
         return
     }
 
-    //% advanced=true shim=maqueenIR::getParam
+    //% advanced=true shim=ddmakeIR::getParam
     function getParam(): number {
         return 0
     }
 
-    function maqueenInit(): void {
+    function ddmakeInit(): void {
         if (alreadyInit == 1) {
             return
         }
@@ -127,14 +120,14 @@ namespace maqueen {
     //% weight=2
     //% blockGap=50
     //% blockId=IR_callbackUser block="on IR received"
-    export function IR_callbackUser(maqueencb: (message: number) => void) {
-        maqueenInit();
+    export function IR_callbackUser(ddmakecb: (message: number) => void) {
+        ddmakeInit();
         IR_callback(() => {
             const packet = new Packeta();
-            packet.mye = maqueene;
-            maqueenparam = getParam();
-            packet.myparam = maqueenparam;
-            maqueencb(packet.myparam);
+            packet.mye = ddmakee;
+            ddmakeparam = getParam();
+            packet.myparam = ddmakeparam;
+            ddmakecb(packet.myparam);
         });
     }
 
@@ -145,7 +138,7 @@ namespace maqueen {
     //% weight=10
     //% blockId=IR_read block="read IR key value"
     export function IR_read(): number {
-        maqueenInit()
+        ddmakeInit()
         return getParam()
     }
 
@@ -156,7 +149,7 @@ namespace maqueen {
     //% weight=10
     //% blockId=IR_read_version block="get product information"
     export function IR_read_version(): string {
-        maqueenInit()
+        ddmakeInit()
         pins.i2cWriteNumber(0x10, 50, NumberFormat.UInt8BE);
         let dataLen = pins.i2cReadNumber(0x10, NumberFormat.UInt8BE);
         pins.i2cWriteNumber(0x10, 51, NumberFormat.UInt8BE);
@@ -169,9 +162,9 @@ namespace maqueen {
     }
 
     function IR_callback(a: Action): void {
-        maqueencb = a
+        ddmakecb = a
         IrPressEvent += 1
-        onPressEvent(IrPressEvent, maqueencb)
+        onPressEvent(IrPressEvent, ddmakecb)
     }
 
     /**
@@ -204,7 +197,7 @@ namespace maqueen {
     }
 
     /**
-     * Set the direction and speed of Maqueen motor.
+     * Set the direction and speed of ddmake motor.
      */
 
     //% weight=90
@@ -237,7 +230,7 @@ namespace maqueen {
     }
 
     /**
-     * Stop the Maqueen motor.
+     * Stop the ddmake motor.
      */
     //% weight=20
     //% blockId=motor_motorStop block="motor |%motors stop"
@@ -304,7 +297,7 @@ namespace maqueen {
     }
 
     /**
-     * Set the Maqueen servos.
+     * Set the ddmake servos.
      */
 
     //% weight=90

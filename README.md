@@ -1,57 +1,57 @@
  
-# Maqueen
+# ddmake
 
-[Maqueen is an easy-to-use programming educational Robot](https://www.dfrobot.com.cn/goods-1802.html)
+[ddmake is an easy-to-use programming educational Robot]
 
 ## Basic usage
 
-* Set the direction and speed of Maqueen motor
+* Set the direction and speed of ddmake motor
 
 ```blocks
- maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 120)
- maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 120)
+ ddmake.motorRun(ddmake.Motors.M1, ddmake.Dir.CW, 120)
+ ddmake.motorRun(ddmake.Motors.M2, ddmake.Dir.CCW, 120)
 ```
 
 * Read ultrasonic sensor
 
 ```blocks
-basic.showNumber(maqueen.Ultrasonic(PingUnit.Centimeters))
+basic.showNumber(ddmake.Ultrasonic(PingUnit.Centimeters))
 ```
 
-* Set the  Maqueen servos 
+* Set the  ddmake servos 
 
 ```blocks
-maqueen.servoRun(maqueen.Servos.S1, 90)
+ddmake.servoRun(ddmake.Servos.S1, 90)
 ```
 
-* Stop the Maqueen motor 
+* Stop the ddmake motor 
 
 ```blocks
-maqueen.motorStop(maqueen.Motors.M1)
+ddmake.motorStop(ddmake.Motors.M1)
 ```
 
 * Read line tracking sensor
 
 ```blocks
-serial.writeNumber(maqueen.readPatrol(maqueen.Patrol.PatrolLeft))
+serial.writeNumber(ddmake.readPatrol(ddmake.Patrol.PatrolLeft))
 ```
 
 * Turn on/off the LEDs
 
 ```blocks
-maqueen.writeLED(maqueen.LED.LEDLeft, maqueen.LEDswitch.turnOn)
+ddmake.writeLED(ddmake.LED.LEDLeft, ddmake.LEDswitch.turnOn)
 ```
 
 * Read IR sensor value
 
 ```blocks
-basic.showNumber(maqueen.IR_read())
+basic.showNumber(ddmake.IR_read())
 ```
 
 * Read the version number
 
 ```blocks
-basic.showString(maqueen.IR_read_version())
+basic.showString(ddmake.IR_read_version())
 ```
 
 ## License
